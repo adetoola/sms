@@ -1,0 +1,15 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "printWidth":  120,
+  "tabWidth":  2,
+  "parser": "typescript",
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}

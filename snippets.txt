@@ -1,0 +1,24 @@
+0   No Error
+
+100 General Error           Errors occurred trying to perform the requested action
+401 Invalid Session ID
+402 Invalid Sub-Account or Password
+403 Invalid Recharge Voucher code
+
+
+404 Insufficient Credit     Insufficient credit to complete request.
+
+405 Recharge Voucher is disabled
+
+406 Recharge Voucher is already used
+
+407 Forbidden/Access Denied
+
+408 Invalid Range           Data supplied is not in expected format.
+409 Gateway Error
+410 Account is disabled
+
+
+
+
+HAXM installation failed. To install HAXM follow the instructions found at: https://software.intel.com/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-mac-os-x
