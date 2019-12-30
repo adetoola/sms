@@ -1,7 +1,7 @@
 {
   "name": "@adetoola/sms",
   "version": "0.0.1",
-  "description": "Several Nigerian SMS APIs integration",
+  "description": "SMS is a succinct and flexible way to add Nigerian SMS providers integration to nodejs apps.",
   "keywords": ["adetoola", "sms", "sms api", "msg", "message"],
   "private": false,
   "main": "dist/index.js",
@@ -14,12 +14,14 @@
     "prebuild": "rm -rf dist",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "prepare": "npm run build"
   },
   "author": {
     "name": "Adetola Onasanya",
     "email": "adetola.onasanya@gmail.com"
   },
+  "homepage": "https://github.com/adetoola/sms#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/adetoola/sms.git"
@@ -27,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/adetoola/sms/issues"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
     "build-url": "^2.0.0",
