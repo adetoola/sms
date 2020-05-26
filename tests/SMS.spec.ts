@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import SMS from '../';
-import { SMSLive247Strategy } from '../Strategies/SMSLive247Strategy';
+import SMS from '../src';
+import { SMSLive247Strategy } from '../src/Strategies/SMSLive247Strategy';
 import { SMS247LiveCredentialStub } from './fixtures/credentials';
 import { numbers320 } from './fixtures/recipients';
 

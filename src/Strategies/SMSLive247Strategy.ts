@@ -2,7 +2,7 @@ import axios from 'axios';
 import buildUrl from 'build-url';
 import chunk from 'lodash/chunk';
 
-import { InvalidArgsError } from '../Errors/InvalidArgsError';
+import { InvalidArgsError } from '../utils/errors/InvalidArgsError';
 import { SMSStrategy } from './SMSStrategy';
 import { messageType, Strategy } from './Strategy';
 
@@ -24,10 +24,11 @@ export class SMSLive247Strategy extends SMSStrategy implements Strategy {
 
   credentials(credentials: SMSLive247Credential) {
     this._credentials = credentials;
+    return this;
   }
 
   async send(recipient: string | string[], message: string, type: messageType = 'TEXT'): Promise<string | string[]> {
-    let msg = this.sanitizeMessage(message);
+    const msg = this.sanitizeMessage(message);
     if (!this.isValidMessageLength(msg)) {
       throw new InvalidArgsError(`Message length should be ${this.length} characters or less`);
     }
@@ -35,7 +36,7 @@ export class SMSLive247Strategy extends SMSStrategy implements Strategy {
     const recipients = this.getUniqueRecipients(recipient);
     const chunked: string[][] = chunk(recipients, this.MAX_MSG_GET);
     return Promise.all(
-      chunked.map(async chk => {
+      chunked.map(async (chk) => {
         const url = buildUrl(this.api, {
           queryParams: {
             cmd: 'sendmsg',
@@ -43,8 +44,8 @@ export class SMSLive247Strategy extends SMSStrategy implements Strategy {
             message: msg,
             sender: this._credentials.sender as string,
             sendto: chk,
-            msgtype: this.parseMessageType(type)
-          }
+            msgtype: this.parseMessageType(type),
+          },
         });
 
         const { data } = await axios.get(url);
@@ -53,7 +54,7 @@ export class SMSLive247Strategy extends SMSStrategy implements Strategy {
     );
   }
 
-  protected parseMessageType(type: string) {
+  protected parseMessageType(type: string): string {
     switch (type) {
       case 'TEXT':
         return '0';

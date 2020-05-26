@@ -1,6 +1,6 @@
-import { InvalidArgsError } from './Errors/InvalidArgsError';
 import { SMSLive247Strategy } from './Strategies/SMSLive247Strategy';
 import { Credential, messageType, Strategy } from './Strategies/Strategy';
+import { InvalidArgsError } from './utils/errors/InvalidArgsError';
 
 export type strategyTypes = 'SMSLive247';
 
@@ -11,7 +11,7 @@ export class SMS {
    */
   protected _strategy!: Strategy;
   protected _sender!: string;
-  protected validRegex: RegExp = /^[A-Za-z-_0-9]{1,11}$/;
+  protected validRegex = /^[A-Za-z-_0-9]{1,11}$/;
 
   constructor(strategy: strategyTypes) {
     this.gateway(strategy);
@@ -29,7 +29,7 @@ export class SMS {
     return this;
   }
 
-  get strategy() {
+  get strategy(): Strategy {
     return this._strategy;
   }
 
