@@ -46,6 +46,11 @@
       "subject-case": [2, "never", ["start-case", "pascal-case"]]
     }
   },
+  "lint-staged": {
+    "*.ts": "eslint --cache --fix",
+    "*.{ts,js,json}": ["prettier --config .prettierrc --write"],
+    "*package.json": ["sort-package-json", "prettier --config .prettierrc --write"]
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "build-url": "^2.0.0",
