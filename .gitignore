@@ -78,6 +78,7 @@ typings/
 
 # Typescript build output
 build/
+dist/
 
 # Notes and stuff
 todo.txt
