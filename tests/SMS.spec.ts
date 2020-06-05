@@ -27,15 +27,17 @@ describe('SMS', () => {
 
   it('should throw an error when message length is more than max.', async () => {
     let sms = new SMS('SMSLive247');
-    // @ts-ignore
-    function err() {
-      return sms.send(
+
+    const err = async () => {
+      await sms.send(
         '98867373512',
+        'NG',
         'qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr ',
         'TEXT'
       );
-    }
-    expect(err).toThrow();
+    };
+
+    await expect(err()).rejects.toThrow();
   });
 
   describe('SMS.sender()', () => {
@@ -55,18 +57,18 @@ describe('SMS', () => {
 
       // @ts-ignore
       axios.get.mockResolvedValue({ data: 'OK: 94936219' });
-      const result = await sms.send('98867373512', 'I love you, Bae', 'TEXT');
+      const result = await sms.send('98867373512', 'NG', 'I love you, Bae', 'TEXT');
       expect(axios.get).toHaveBeenCalledTimes(1);
       expect(result).toEqual(['OK: 94936219']);
     });
 
-    it('should send multiple messages', async () => {
+    it('should batch messages when more than send limit', async () => {
       let sms = new SMS('SMSLive247');
       sms.credentials(SMS247LiveCredentialStub);
 
       // @ts-ignore
       axios.get.mockResolvedValue({ data: 'OK: 94936219' });
-      const result = await sms.send(numbers320, 'I love you, Bae', 'TEXT');
+      const result = await sms.send(numbers320, 'NG', 'I love you, Bae', 'TEXT');
       expect(axios.get).toHaveBeenCalledTimes(4);
       expect(result).toEqual(['OK: 94936219', 'OK: 94936219', 'OK: 94936219', 'OK: 94936219']);
     });

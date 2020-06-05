@@ -1,3 +1,4 @@
+import { CountryCode, parsePhoneNumber } from 'libphonenumber-js';
 import isArray from 'lodash/isArray';
 import uniq from 'lodash/uniq';
 
@@ -8,13 +9,24 @@ export abstract class SMSStrategy {
     return str.trim().replace(/\s+/g, ' ');
   }
 
-  protected isValidMessageLength(msg: string): Boolean {
+  protected isValidMessageLength(msg: string): boolean {
     return msg.length > this.length ? false : true;
   }
 
-  // TODO: ValidateRecipients();
+  protected getValidRecipients(recipients: string | string[], country?: CountryCode): string[] {
+    const numbers = this.getUniqueRecipients(recipients);
 
-  protected getUniqueRecipients(recipients: string | string[]): string[] {
-    return isArray(recipients) ? uniq(recipients) : [recipients];
+    const validRecipients = numbers.map((number) => {
+      const phoneNumber = parsePhoneNumber(number, country);
+      if (phoneNumber.isValid()) {
+        return phoneNumber.number;
+      }
+    });
+
+    return validRecipients as any;
+  }
+
+  private getUniqueRecipients(recipients: string | string[]): string[] {
+    return isArray(recipients) ? uniq(recipients) : uniq(recipients.split(','));
   }
 }

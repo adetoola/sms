@@ -54,6 +54,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "build-url": "^2.0.0",
+    "libphonenumber-js": "^1.7.52",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

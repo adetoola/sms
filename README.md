@@ -29,7 +29,6 @@ Getting started with SMS is quite easy, just install using your favourite packag
 
 You can specify any of the supported sms gateway from the list below:
 
-- [x] Log (console.log)
 - [x] SMS247Live
 - [ ] XWireless
 - [ ] 50Kobo
@@ -58,12 +57,12 @@ SMS_SESSION_ID='YOUR_SESSION_ID_HERE'
 Using SMS is quite simple.
 
 ```js
-sms = new SMS('SMSLive247');
+const sms = new SMS('SMSLive247');
 sms.sender(sender).country(country).credentials(credentials);
 
-message_id = sms.send('08123456789', 'Hi, I am using Adetoola SMS package');
+const messageId = sms.send('08123456789', 'NG', 'Hi, I am using Adetoola SMS package');
 
-console.log(message_id);
+console.log(messageId);
 ```
 
 ### Methods
@@ -84,6 +83,7 @@ console.log(message_id);
 | Input | Description | Accepted Formats |
 | --- | --- | --- |
 | `recipient` | Comma separated numbers, number or array | +2348012345678, 2348012345678, 8012345678, 0812345678 |
+| `country` | "Country" is a two-letter ISO country code (like NG) | [AZ]{2} |
 | `msg` | Text message which will be sent to the numbers. |[a-zA-Z0-9+_-."'\s]{1,160} |
 | `sender` | Number to display as sender | [a-zA-Z0-9_-]{1,11} |
 | `msg_type` | Normal SMS, Flash or MMS | TEXT, FLASH, MMS |

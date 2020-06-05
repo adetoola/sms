@@ -1,3 +1,5 @@
+import { CountryCode } from 'libphonenumber-js';
+
 import { SMSLive247Strategy } from './Strategies/SMSLive247Strategy';
 import { Credential, messageType, Strategy } from './Strategies/Strategy';
 import { InvalidArgsError } from './utils/errors/InvalidArgsError';
@@ -67,7 +69,12 @@ export class SMS {
    * @param message A string of 160 characters or less
    * @param messageType TEXT or FLASH
    */
-  send(recipient: string | string[], message: string, messageType: messageType): Promise<string | string[]> {
-    return this.strategy.send(recipient, message, messageType);
+  send(
+    recipient: string | string[],
+    country: CountryCode,
+    message: string,
+    messageType: messageType
+  ): Promise<string | string[]> {
+    return this.strategy.send(recipient, country, message, messageType);
   }
 }
