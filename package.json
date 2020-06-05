@@ -26,7 +26,6 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc -p tsconfig.build.json",
-    "postinstall": "yarn build",
     "prepare": "yarn build",
     "release": "standard-version",
     "test": "jest",
