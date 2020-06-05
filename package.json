@@ -1,6 +1,6 @@
 {
   "name": "@adetoola/sms",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "description": "SMS is a succinct and flexible way to add Nigerian SMS providers integration to nodejs apps.",
   "keywords": ["adetoola", "sms", "sms api", "msg", "message"],
