@@ -6,3 +6,4 @@ tests
 .vscode
 koa/views
 src/generated
+package.json
