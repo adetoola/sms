@@ -6,7 +6,6 @@ import { SMS247LiveCredentialStub } from './fixtures/credentials';
 import { numbers320 } from './fixtures/recipients';
 
 jest.mock('axios');
-
 beforeEach(() => {
   // @ts-ignore
   axios.get.mockClear();
@@ -30,7 +29,7 @@ describe('SMS', () => {
 
     const err = async () => {
       await sms.send(
-        '98867373512',
+        '08034567890',
         'NG',
         'qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr qwwwwwryryr ',
         'TEXT'
@@ -57,7 +56,7 @@ describe('SMS', () => {
 
       // @ts-ignore
       axios.get.mockResolvedValue({ data: 'OK: 94936219' });
-      const result = await sms.send('98867373512', 'NG', 'I love you, Bae', 'TEXT');
+      const result = await sms.send('08134567890', 'NG', 'I love you, Bae', 'TEXT');
       expect(axios.get).toHaveBeenCalledTimes(1);
       expect(result).toEqual(['OK: 94936219']);
     });
@@ -69,8 +68,8 @@ describe('SMS', () => {
       // @ts-ignore
       axios.get.mockResolvedValue({ data: 'OK: 94936219' });
       const result = await sms.send(numbers320, 'NG', 'I love you, Bae', 'TEXT');
-      expect(axios.get).toHaveBeenCalledTimes(4);
-      expect(result).toEqual(['OK: 94936219', 'OK: 94936219', 'OK: 94936219', 'OK: 94936219']);
+      expect(axios.get).toHaveBeenCalledTimes(1);
+      expect(result).toEqual(['OK: 94936219']);
     });
   });
 });

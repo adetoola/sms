@@ -2,9 +2,10 @@ import { CountryCode } from 'libphonenumber-js';
 
 import { SMSLive247Strategy } from './Strategies/SMSLive247Strategy';
 import { Credential, messageType, Strategy } from './Strategies/Strategy';
+import { TestStrategy } from './Strategies/TestStrategy';
 import { InvalidArgsError } from './utils/errors/InvalidArgsError';
 
-export type strategyTypes = 'SMSLive247';
+export type strategyTypes = 'SMSLive247' | 'Test';
 
 export class SMS {
   /**
@@ -23,6 +24,9 @@ export class SMS {
     switch (strategy) {
       case 'SMSLive247':
         this._strategy = new SMSLive247Strategy();
+        break;
+      case 'Test':
+        this._strategy = new TestStrategy();
         break;
       default:
         throw new Error('Unrecognised Gateway! Please check, your inputs');

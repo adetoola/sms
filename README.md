@@ -29,6 +29,7 @@ Getting started with SMS is quite easy, just install using your favourite packag
 
 You can specify any of the supported sms gateway from the list below:
 
+- [x] Test (Use as a test account)
 - [x] SMS247Live
 - [ ] XWireless
 - [ ] 50Kobo
@@ -45,7 +46,7 @@ const sms = new SMS('SMSLive247');
 Each SMS service provider will give authorised users a set of credentials to use when sending SMS or interacting with their services. 
 
 ```env
-# Log
+# Test
 SMS_SENDER='YOUR_SENDER_NAME_HERE'
 
 # SMS247Live

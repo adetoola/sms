@@ -1,10 +1,11 @@
 import { CountryCode } from 'libphonenumber-js';
 
 import { SMSLive247Credential } from './SMSLive247Strategy';
+import { TestCredential } from './TestStrategy';
 
 export type messageType = 'TEXT' | 'FLASH' | 'MMS';
 
-export type Credential = SMSLive247Credential;
+export type Credential = SMSLive247Credential | TestCredential;
 
 export interface Strategy {
   credentials(credentials: Credential): void;

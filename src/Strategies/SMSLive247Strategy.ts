@@ -23,9 +23,13 @@ export class SMSLive247Strategy extends SMSStrategy implements Strategy {
 
   protected _credentials!: SMSLive247Credential;
 
-  credentials(credentials: SMSLive247Credential) {
+  credentials(credentials: SMSLive247Credential): SMSLive247Strategy {
     this._credentials = credentials;
     return this;
+  }
+
+  get batchSize(): number {
+    return this.MAX_MSG_GET;
   }
 
   async send(
@@ -40,7 +44,7 @@ export class SMSLive247Strategy extends SMSStrategy implements Strategy {
     }
 
     const recipients = this.getValidRecipients(recipient, country);
-    const chunked: string[][] = chunk(recipients, this.MAX_MSG_GET);
+    const chunked: string[][] = chunk(recipients, this.batchSize);
     return Promise.all(
       chunked.map(async (chk) => {
         const url = buildUrl(this.api, {
