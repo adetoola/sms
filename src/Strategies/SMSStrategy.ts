@@ -16,13 +16,18 @@ export abstract class SMSStrategy {
   protected getValidRecipients(recipients: string | string[], country?: CountryCode): string[] {
     const numbers = this.getUniqueRecipients(recipients);
 
-    const validRecipients = numbers.map((number) => {
-      const phoneNumber = parsePhoneNumber(number, country);
-      if (phoneNumber.isValid()) {
-        return phoneNumber.number;
-      }
-    });
+    const validRecipients = numbers
+      .map((number) => {
+        const phoneNumber = parsePhoneNumber(number, country);
+        if (phoneNumber.isValid()) {
+          return phoneNumber.number;
+        }
+      })
+      .filter(Boolean);
 
+    if (validRecipients.length === 0) {
+      throw new Error('No valid recipient in the input');
+    }
     return validRecipients as any;
   }
 
