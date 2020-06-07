@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/adetoola/sms/compare/v2.0.1...v2.1.0) (2020-06-07)
+
+
+### Features
+
+* add a TestStrategy ([a5cf5b9](https://github.com/adetoola/sms/commit/a5cf5b9e9996f0b6dbb0ae11a395260ab70ae59a))
+
+
+### Bug Fixes
+
+* duplicate formating for package.json ([b6a01d9](https://github.com/adetoola/sms/commit/b6a01d96551566f27a7d870a758e8cb26c1ca21f))
+* getValidRecipients() should throw an error result is empty ([6c6e2c2](https://github.com/adetoola/sms/commit/6c6e2c27d567695434e3ca196d4ab1e4eec863a4))
+
 ### [2.0.1](https://github.com/adetoola/sms/compare/v2.0.0...v2.0.1) (2020-06-05)
 
 
