@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/adetoola/sms/compare/v2.1.0...v2.1.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* specify build directory ([92fe007](https://github.com/adetoola/sms/commit/92fe007ea12b049b69243ab667a73e816ec78d0b))
+
 ## [2.1.0](https://github.com/adetoola/sms/compare/v2.0.1...v2.1.0) (2020-06-07)
 
 
