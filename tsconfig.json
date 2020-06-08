@@ -5,6 +5,7 @@
     "paths": { "*": ["types/*"] },
     "target": "esnext",
     "module": "commonjs",
+    "declaration": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
